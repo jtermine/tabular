@@ -73,8 +73,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Promises\AddColumnPromise.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Types\ColumnDefinitionType.cs" />
+    <Compile Include="Types\AbstractColumnDefinitionType.cs" />
     <Compile Include="Types\ColumnValueType.cs" />
+    <Compile Include="Types\IColumnDefinitionType.cs" />
+    <Compile Include="Types\TextEditType.cs" />
     <Compile Include="Workloads\DataTableWorkload.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

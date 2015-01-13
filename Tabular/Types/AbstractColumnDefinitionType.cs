@@ -1,6 +1,6 @@
 ﻿namespace Tabular.Types
 {
-    public class ColumnDefinitionType
+    public abstract class AbstractColumnDefinitionType : IColumnDefinitionType
     {
         public string Name { get; set; }
         public string Caption { get; set; }

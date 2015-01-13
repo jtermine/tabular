@@ -19,8 +19,6 @@ namespace Tabular
 
             bindingSource1.DataSource = dataSet.Tables["tableColumns"];
             gridControl1.DataSource = bindingSource1.DataSource;
-
-            DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
         }
 
         private void barAddColumn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -41,10 +39,6 @@ namespace Tabular
 
         private void SuccessAddColumn(IAmAPromise<DataTableWorkload> promise)
         {
-            var x = InvokeRequired;
-
-            bindingSource1.DataSource = promise.Workload.DataTable;
-
             foreach (DataColumn column in promise.Workload.DataTable.Columns)
             {
                 if (gridView1.Columns.Select(f => f.FieldName).Contains(column.ColumnName)) continue;
