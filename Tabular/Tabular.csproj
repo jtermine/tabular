@@ -76,6 +76,8 @@
     <Compile Include="Types\AbstractColumnDefinitionType.cs" />
     <Compile Include="Types\ColumnValueType.cs" />
     <Compile Include="Types\IColumnDefinitionType.cs" />
+    <Compile Include="Types\DecimalSpinEditType.cs" />
+    <Compile Include="Types\IntSpinEditType.cs" />
     <Compile Include="Types\TextEditType.cs" />
     <Compile Include="Workloads\DataTableWorkload.cs" />
     <EmbeddedResource Include="Form1.resx">
