@@ -37,9 +37,20 @@ namespace Tabular.Promises
         {
             var count = Workload.DataTable.Columns.Count + 1;
 
-            foreach (var textEditType in Workload.List.Select(f=>f as TextEditType).Where(f=>f != null).Where(g=> !Workload.DataTable.Columns.Contains(g.Name)))
+            foreach (
+                var column in
+                    Workload.List.Select(f => f as TextEditType)
+                        .Where(f => f != null)
+                        .Where(g => !Workload.DataTable.Columns.Contains(g.Name))
+                        .Select(
+                            textEditType =>
+                                new DataColumn(textEditType.Name)
+                                {
+                                    Caption = textEditType.Caption,
+                                    MaxLength = textEditType.MaxLength,
+                                    DataType = typeof (string)
+                                }))
             {
-                var column = new DataColumn(textEditType.Name) { Caption = textEditType.Caption, MaxLength = textEditType.MaxLength, DataType= typeof(string)};
                 Workload.DataTable.Columns.Add(column);
             }
 
