@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using Tabular.Types;
 using Termine.Promises.Generics;
 
 namespace Tabular.Workloads
@@ -12,5 +14,6 @@ namespace Tabular.Workloads
         }
 
         public DataTable DataTable { get; set; }
+        public List<IColumnDefinitionType> List { get; set; }
     }
 }

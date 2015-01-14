@@ -73,6 +73,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Promises\AddColumnPromise.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TabModels\StudentTabModel.cs" />
     <Compile Include="Types\AbstractColumnDefinitionType.cs" />
     <Compile Include="Types\ColumnValueType.cs" />
     <Compile Include="Types\IColumnDefinitionType.cs" />

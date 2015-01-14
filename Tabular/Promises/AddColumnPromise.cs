@@ -1,5 +1,7 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using Tabular.Types;
 using Tabular.Workloads;
 using Termine.Promises;
 using Termine.Promises.Generics;
@@ -16,11 +18,13 @@ namespace Tabular.Promises
             this.WithExecutor("addColumn", AddColumn);
         }
 
-        public AddColumnPromise Prep(object table = null)
+        public AddColumnPromise Prep(List<IColumnDefinitionType> list, object table = null)
         {
             if (table as DataTable == null) return this;
 
             Workload.DataTable = table as DataTable;
+            Workload.List = list;
+            
             return this;
         }
 
@@ -32,24 +36,17 @@ namespace Tabular.Promises
         private void AddColumn(DataTableWorkload dataTableWorkload)
         {
             var count = Workload.DataTable.Columns.Count + 1;
-            var columnFieldName = string.Format("Col_{0}", count);
-            var columnCaption = string.Format("Column {0}", count);
-            var column = new DataColumn(columnFieldName) {Caption = columnCaption};
-            var dateColumn = new DataColumn(string.Format("Col_{0}_date", count), typeof (DateTime));
-            
-            Workload.DataTable.Columns.Add(column);
-            Workload.DataTable.Columns.Add(dateColumn);
-            
+
+            foreach (var textEditType in Workload.List.Select(f=>f as TextEditType).Where(f=>f != null).Where(g=> !Workload.DataTable.Columns.Contains(g.Name)))
+            {
+                var column = new DataColumn(textEditType.Name) { Caption = textEditType.Caption, MaxLength = textEditType.MaxLength, DataType= typeof(string)};
+                Workload.DataTable.Columns.Add(column);
+            }
+
             var row = Workload.DataTable.NewRow();
 
             foreach (DataColumn dataColumn in Workload.DataTable.Columns)
             {
-                if (dataColumn.ColumnName.Contains("date"))
-                {
-                    row[dataColumn.ColumnName] = DateTime.Now;
-                    continue;
-                }
-                
                 row[dataColumn.ColumnName] = string.Format("column_{0}_{1}", count, dataColumn.Caption);
             }
 
