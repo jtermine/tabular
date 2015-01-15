@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using Tabular.TabModels;
 using Tabular.Types;
 using Tabular.Workloads;
 using Termine.Promises;
@@ -12,7 +13,7 @@ namespace Tabular.Promises
     public class AddColumnPromise: Promise<DataTableWorkload>
     {
         public override void Init()
-        {
+        { 
             this.WithNLogInstrumentation();
             this.WithValidator("dataTableNotNull", DataTableNotNull);
             this.WithExecutor("addColumn", AddColumn);
@@ -35,31 +36,9 @@ namespace Tabular.Promises
 
         private void AddColumn(DataTableWorkload dataTableWorkload)
         {
-            var count = Workload.DataTable.Columns.Count + 1;
-
-            foreach (
-                var column in
-                    Workload.List.Select(f => f as TextEditType)
-                        .Where(f => f != null)
-                        .Where(g => !Workload.DataTable.Columns.Contains(g.Name))
-                        .Select(
-                            textEditType =>
-                                new DataColumn(textEditType.Name)
-                                {
-                                    Caption = textEditType.Caption,
-                                    MaxLength = textEditType.MaxLength,
-                                    DataType = typeof (string)
-                                }))
-            {
-                Workload.DataTable.Columns.Add(column);
-            }
+            Workload.DataTable.SyncColumns(Workload.List);
 
             var row = Workload.DataTable.NewRow();
-
-            foreach (DataColumn dataColumn in Workload.DataTable.Columns)
-            {
-                row[dataColumn.ColumnName] = string.Format("column_{0}_{1}", count, dataColumn.Caption);
-            }
 
             Workload.DataTable.Rows.Add(row);
         }

@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barAddColumn = new DevExpress.XtraBars.BarButtonItem();
+            this.barRemoveColumn = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -39,8 +41,6 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.barAddColumn = new DevExpress.XtraBars.BarButtonItem();
-            this.barRemoveColumn = new DevExpress.XtraBars.BarButtonItem();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -76,6 +76,19 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barAddColumn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barRemoveColumn)});
             this.bar1.Text = "Tools";
+            // 
+            // barAddColumn
+            // 
+            this.barAddColumn.Caption = "Add Column";
+            this.barAddColumn.Id = 0;
+            this.barAddColumn.Name = "barAddColumn";
+            this.barAddColumn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barAddColumn_ItemClick);
+            // 
+            // barRemoveColumn
+            // 
+            this.barRemoveColumn.Caption = "Remove Column";
+            this.barRemoveColumn.Id = 1;
+            this.barRemoveColumn.Name = "barRemoveColumn";
             // 
             // bar2
             // 
@@ -144,19 +157,7 @@
             // 
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            // 
-            // barAddColumn
-            // 
-            this.barAddColumn.Caption = "Add Column";
-            this.barAddColumn.Id = 0;
-            this.barAddColumn.Name = "barAddColumn";
-            this.barAddColumn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barAddColumn_ItemClick);
-            // 
-            // barRemoveColumn
-            // 
-            this.barRemoveColumn.Caption = "Remove Column";
-            this.barRemoveColumn.Id = 1;
-            this.barRemoveColumn.Name = "barRemoveColumn";
+            this.gridView1.OptionsView.ShowGroupedColumns = true;
             // 
             // Form1
             // 

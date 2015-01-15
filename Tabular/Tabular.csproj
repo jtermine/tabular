@@ -59,23 +59,52 @@
     <Reference Include="Termine.Promises.Base">
       <HintPath>..\packages\Termine.Promises.Base.0.0.5489.39485\lib\net45\Termine.Promises.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Termine.Promises.NLogInstrumentation">
-      <HintPath>..\packages\Termine.Promises.NLogInstrumentation.0.0.5489.40119\lib\net45\Termine.Promises.NLogInstrumentation.dll</HintPath>
+    <Reference Include="Termine.Promises.NLogInstrumentation, Version=0.0.5493.20558, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Termine.Promises.NLogInstrumentation.0.0.5493.20558\lib\net45\Termine.Promises.NLogInstrumentation.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataColumnExtensions\IntSpinEditDataColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataColumnExtensions\DecimalSpinEditDataColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataColumnExtensions\TextEditDataColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataColumnExtensions\ComboBoxDataColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataColumnExtensions\DataColumnFactory.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GridColumnExtensions\DecimalSpinEditGridColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GridColumnExtensions\GridColumnFactory.cs" />
+    <Compile Include="GridColumnExtensions\IntSpinEditGridColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GridColumnExtensions\TextEditGridColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GridColumnExtensions\ComboBoxGridColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Promises\AddColumnPromise.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TabModels\StudentTabModel.cs" />
+    <Compile Include="TabModels\TabModelExtensions.cs" />
     <Compile Include="Types\AbstractColumnDefinitionType.cs" />
     <Compile Include="Types\ColumnValueType.cs" />
+    <Compile Include="Types\ComboBoxType.cs" />
     <Compile Include="Types\IColumnDefinitionType.cs" />
     <Compile Include="Types\DecimalSpinEditType.cs" />
     <Compile Include="Types\IntSpinEditType.cs" />
