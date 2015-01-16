@@ -81,13 +81,13 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Termine.Promises.Base, Version=0.0.5493.38515, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Termine.Promises.Base, Version=0.0.5494.23158, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Termine.Promises.Base.0.0.5493.38515\lib\net45\Termine.Promises.Base.dll</HintPath>
+      <HintPath>..\packages\Termine.Promises.Base.0.0.5494.23158\lib\net45\Termine.Promises.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Termine.Promises.NLogInstrumentation, Version=0.0.5493.38216, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Termine.Promises.NLogInstrumentation, Version=0.0.5494.23461, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Termine.Promises.NLogInstrumentation.0.0.5493.38216\lib\net45\Termine.Promises.NLogInstrumentation.dll</HintPath>
+      <HintPath>..\packages\Termine.Promises.NLogInstrumentation.0.0.5494.23461\lib\net45\Termine.Promises.NLogInstrumentation.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +104,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataColumnExtensions\DataColumnFactory.cs" />
+    <Compile Include="Promises\OpenTabularFilePromise.cs" />
     <Compile Include="TableForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +143,7 @@
     <Compile Include="Types\IntSpinEditType.cs" />
     <Compile Include="Types\TextEditType.cs" />
     <Compile Include="Workloads\DataTableWorkload.cs" />
+    <Compile Include="Workloads\OpenTabularFileWorkload.cs" />
     <EmbeddedResource Include="TableForm.resx">
       <DependentUpon>TableForm.cs</DependentUpon>
     </EmbeddedResource>

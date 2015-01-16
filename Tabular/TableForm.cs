@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Windows.Forms;
 using Tabular.GridColumnExtensions;
 using Tabular.Promises;
 using Tabular.TabModels;
@@ -44,6 +45,18 @@ namespace Tabular
                 .RunAsync();
         }
 
-        
+        private void barOpen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var fileDialog = openFileDialog1.ShowDialog(this);
+
+            switch (fileDialog)
+            {
+                    case DialogResult.OK:
+                    new OpenTabularFilePromise()
+                        .WithFileName(openFileDialog1.FileName)
+                        .RunAsync();
+                    break;
+            }
+        }
     }
 }
