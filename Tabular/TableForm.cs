@@ -5,11 +5,11 @@ using Tabular.TabModels;
 
 namespace Tabular
 {
-    public partial class Form1 : DevExpress.XtraEditors.XtraForm
+    public partial class TableForm : DevExpress.XtraEditors.XtraForm
     {
         readonly StudentTabModel _studentTabModel = new StudentTabModel();
 
-        public Form1()
+        public TableForm()
         {
             InitializeComponent();
 

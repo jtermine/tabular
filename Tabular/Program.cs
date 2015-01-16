@@ -22,7 +22,7 @@ namespace Tabular
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
 // ReSharper disable once CSharpWarnings::CS0618
             DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
-            Application.Run(new Form1());
+            Application.Run(new TabularMainForm());
         }
     }
 }
