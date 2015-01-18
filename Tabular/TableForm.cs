@@ -1,5 +1,7 @@
 ﻿using System.Data;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using Tabular.GridColumnExtensions;
 using Tabular.Promises;
 using Tabular.TabModels;
@@ -57,6 +59,17 @@ namespace Tabular
                         .RunAsync();
                     break;
             }
+        }
+
+        private void gridView1_ShownEditor(object sender, System.EventArgs e)
+        {
+            var view = sender as GridView;
+
+            if (view == null || !(view.ActiveEditor is LookUpEdit)) return;
+
+            ((LookUpEdit)view.ActiveEditor).ShowPopup();
+
+            //throw new DevExpress.Utils.HideException();
         }
     }
 }

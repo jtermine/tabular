@@ -8,6 +8,8 @@ namespace Tabular
 {
     static class Program
     {
+        public static readonly object Lock = new Object();
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

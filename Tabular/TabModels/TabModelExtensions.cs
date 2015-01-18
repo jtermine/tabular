@@ -21,9 +21,12 @@ namespace Tabular.TabModels
         {
             var columnDefinitionTypes = tabModel as IColumnDefinitionType[] ?? tabModel.ToArray();
 
-            foreach (var columnDefinitionType in columnDefinitionTypes.Where(columnDefinitionType => !dataTable.Columns.Contains(columnDefinitionType.Name)))
+            lock (Program.Lock)
             {
-                dataTable.Columns.Add(columnDefinitionType.AsDataColumn());
+                foreach (var columnDefinitionType in columnDefinitionTypes.Where(columnDefinitionType => !dataTable.Columns.Contains(columnDefinitionType.Name)))
+                {
+                    dataTable.Columns.Add(columnDefinitionType.AsDataColumn());
+                }
             }
         }
     }
