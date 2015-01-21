@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper">
+      <HintPath>..\packages\CsvHelper.2.10.0\lib\net40-client\CsvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.BonusSkins.v14.1" />
     <Reference Include="DevExpress.Charts.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v14.1" />
@@ -104,6 +107,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataColumnExtensions\DataColumnFactory.cs" />
+    <Compile Include="Promises\FindMimeTypePromise.cs" />
     <Compile Include="Promises\OpenTabularFilePromise.cs" />
     <Compile Include="TableForm.cs">
       <SubType>Form</SubType>
