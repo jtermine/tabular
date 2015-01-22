@@ -8,7 +8,7 @@ using Tabular.TabModels;
 
 namespace Tabular
 {
-    public partial class TableForm : DevExpress.XtraEditors.XtraForm
+    public partial class TableForm : XtraForm
     {
         readonly StudentTabModel _studentTabModel = new StudentTabModel();
 
@@ -70,6 +70,15 @@ namespace Tabular
             ((LookUpEdit)view.ActiveEditor).ShowPopup();
 
             //throw new DevExpress.Utils.HideException();
+        }
+
+        private void barChange_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (gridView1.SelectedRowsCount == 0) return;
+
+            var selectedCells = gridView1.GetSelectedCells();
+
+            new ChangeValuesPromise().Prep(selectedCells, (bindingSource1.DataSource as DataTable), "newValue").Run();
         }
     }
 }

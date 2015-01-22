@@ -44,6 +44,7 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.barChange = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -64,9 +65,10 @@
             this.barAddColumn,
             this.barRemoveColumn,
             this.barSubItem1,
-            this.barOpen});
+            this.barOpen,
+            this.barChange});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 4;
+            this.barManager1.MaxItemId = 5;
             // 
             // bar1
             // 
@@ -77,7 +79,8 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barAddColumn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barRemoveColumn)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barRemoveColumn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barChange)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DisableClose = true;
             this.bar1.OptionsBar.DisableCustomization = true;
@@ -181,6 +184,13 @@
             this.openFileDialog1.Filter = "Tabular files|*.lar|All Files|*.*";
             this.openFileDialog1.Title = "Open Tabular file";
             // 
+            // barChange
+            // 
+            this.barChange.Caption = "&Change";
+            this.barChange.Id = 4;
+            this.barChange.Name = "barChange";
+            this.barChange.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barChange_ItemClick);
+            // 
             // TableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,6 +229,7 @@
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem barOpen;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private DevExpress.XtraBars.BarButtonItem barChange;
     }
 }
 

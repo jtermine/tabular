@@ -38,7 +38,7 @@ namespace Tabular.Promises
             {
                 EventId = 1;
                 EventPublicMessage = "The file does not exist";
-                EventPublicMessage = string.Format("The file attempted was : {0}", fileName);
+                EventPublicDetails = string.Format("The file attempted was : {0}", fileName);
                 IsPublicMessage = true;
             }
         }

@@ -104,6 +104,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataColumnExtensions\DataColumnFactory.cs" />
+    <Compile Include="Promises\ChangeValuesPromise.cs" />
     <Compile Include="Promises\OpenTabularFilePromise.cs" />
     <Compile Include="TableForm.cs">
       <SubType>Form</SubType>
@@ -144,6 +145,7 @@
     <Compile Include="Types\TextEditType.cs" />
     <Compile Include="Workloads\DataTableWorkload.cs" />
     <Compile Include="Workloads\OpenTabularFileWorkload.cs" />
+    <Compile Include="Workloads\SelectedCellsWorkload.cs" />
     <EmbeddedResource Include="TableForm.resx">
       <DependentUpon>TableForm.cs</DependentUpon>
     </EmbeddedResource>
