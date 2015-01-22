@@ -42,7 +42,6 @@ namespace Tabular.Promises
 
                 if (gridCell.Column.ColumnType == typeof(string))
                     getRow[gridCell.Column.FieldName] = selectedCellsWorkload.NewValue;
-
             }
         }
 

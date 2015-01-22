@@ -31,11 +31,9 @@ namespace Tabular.TabModels
             }
         }
 
-        public static DataRow InitRow(this DataTable dataTable, IEnumerable<IColumnDefinitionType> tabModel)
+        public static DataRow GetDataRow(this DataTable dataTable, IEnumerable<IColumnDefinitionType> tabModel)
         {
             var columnDefinitionTypes = tabModel as IColumnDefinitionType[] ?? tabModel.ToArray();
-
-            dataTable.SyncColumns(columnDefinitionTypes);
 
             lock (Program.Lock)
             {
@@ -46,7 +44,7 @@ namespace Tabular.TabModels
                     row[dc.ColumnName] = Guid.NewGuid().ToString("N");
                 }
 
-                dataTable.Rows.Add(row);
+                // dataTable.Rows.Add(row);
 
                 return row;
 

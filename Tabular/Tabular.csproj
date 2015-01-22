@@ -135,6 +135,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Promises\AddColumnPromise.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TabModels\FormTimer.cs" />
     <Compile Include="TabModels\StudentTabModel.cs" />
     <Compile Include="TabModels\TabModelExtensions.cs" />
     <Compile Include="TabularMainForm.cs">

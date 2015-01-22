@@ -33,6 +33,7 @@
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barAddColumn = new DevExpress.XtraBars.BarButtonItem();
             this.barRemoveColumn = new DevExpress.XtraBars.BarButtonItem();
+            this.barChange = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barOpen = new DevExpress.XtraBars.BarButtonItem();
@@ -44,7 +45,6 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.barChange = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -100,6 +100,13 @@
             this.barRemoveColumn.Caption = "Remove Column";
             this.barRemoveColumn.Id = 1;
             this.barRemoveColumn.Name = "barRemoveColumn";
+            // 
+            // barChange
+            // 
+            this.barChange.Caption = "&Change";
+            this.barChange.Id = 4;
+            this.barChange.Name = "barChange";
+            this.barChange.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barChange_ItemClick);
             // 
             // bar2
             // 
@@ -183,13 +190,6 @@
             // 
             this.openFileDialog1.Filter = "Tabular files|*.lar|All Files|*.*";
             this.openFileDialog1.Title = "Open Tabular file";
-            // 
-            // barChange
-            // 
-            this.barChange.Caption = "&Change";
-            this.barChange.Id = 4;
-            this.barChange.Name = "barChange";
-            this.barChange.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barChange_ItemClick);
             // 
             // TableForm
             // 

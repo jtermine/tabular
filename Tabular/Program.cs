@@ -22,8 +22,6 @@ namespace Tabular
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-// ReSharper disable once CSharpWarnings::CS0618
-            DevExpress.Data.CurrencyDataController.DisableThreadingProblemsDetection = true;
             Application.Run(new TabularMainForm());
         }
     }

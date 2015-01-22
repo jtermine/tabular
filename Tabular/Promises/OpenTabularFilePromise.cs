@@ -30,7 +30,6 @@ namespace Tabular.Promises
         {
             if (string.IsNullOrEmpty(openTabularFileWorkload.FileName) || !File.Exists(openTabularFileWorkload.FileName))
                 Abort(new FileDoesNotExist(openTabularFileWorkload.FileName));
-
         }
 
         private class FileDoesNotExist : GenericEventMessage

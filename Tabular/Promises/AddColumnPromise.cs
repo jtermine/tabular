@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Data;
 using Tabular.TabModels;
 using Tabular.Types;
@@ -18,11 +19,10 @@ namespace Tabular.Promises
             this.WithExecutor("addColumn", AddColumn);
         }
 
-        public AddColumnPromise Prep(List<IColumnDefinitionType> list, object table = null)
+        public AddColumnPromise Prep(List<IColumnDefinitionType> list, DataTable dataTable, ConcurrentQueue<DataRow> rows)
         {
-            if (table as DataTable == null) return this;
-
-            Workload.DataTable = table as DataTable;
+            Workload.Rows = rows;
+            Workload.DataTable = dataTable;
             Workload.List = list;
             
             return this;
@@ -35,7 +35,7 @@ namespace Tabular.Promises
 
         private void AddColumn(DataTableWorkload dataTableWorkload)
         {
-            Workload.DataTable.InitRow(Workload.List);
+            Workload.Rows.Enqueue(Workload.DataTable.GetDataRow(Workload.List));
         }
     }
 }
