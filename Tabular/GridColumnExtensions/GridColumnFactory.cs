@@ -9,6 +9,8 @@ namespace Tabular.GridColumnExtensions
         {
             switch (type.ValueType)
             {
+                    case ColumnValueType.IdentityColumn:
+                    return (type as IdentityColumnType).AsGridColumn();
                 case ColumnValueType.IntSpinEdit:
                     return (type as IntSpinEditType).AsGridColumn();
                 case ColumnValueType.DecimalSpinEdit:
@@ -20,6 +22,11 @@ namespace Tabular.GridColumnExtensions
                 default:
                     return null;
             }
+        }
+
+        public static IdentityGridColumn AsGridColumn(this IdentityColumnType type)
+        {
+            return type == null ? null : new IdentityGridColumn(type);
         }
 
         public static ComboBoxGridColumn AsGridColumn(this ComboBoxType type)

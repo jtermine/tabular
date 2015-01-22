@@ -2,6 +2,7 @@
 {
     public enum ColumnValueType
     {
+        IdentityColumn,
         CheckedComboBoxEdit,
         CheckEdit,
         ComboBox,

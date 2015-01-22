@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Tabular.DataColumnExtensions;
@@ -27,6 +28,28 @@ namespace Tabular.TabModels
                 {
                     dataTable.Columns.Add(columnDefinitionType.AsDataColumn());
                 }
+            }
+        }
+
+        public static DataRow InitRow(this DataTable dataTable, IEnumerable<IColumnDefinitionType> tabModel)
+        {
+            var columnDefinitionTypes = tabModel as IColumnDefinitionType[] ?? tabModel.ToArray();
+
+            dataTable.SyncColumns(columnDefinitionTypes);
+
+            lock (Program.Lock)
+            {
+                var row = dataTable.NewRow();
+
+                foreach (var dc in columnDefinitionTypes.GetColumns().Select(dataColumn => dataColumn as IdentityDataColumn).Where(isDataColumn => isDataColumn != null))
+                {
+                    row[dc.ColumnName] = Guid.NewGuid().ToString("N");
+                }
+
+                dataTable.Rows.Add(row);
+
+                return row;
+
             }
         }
     }

@@ -7,6 +7,7 @@ namespace Tabular.TabModels
     {
         public StudentTabModel()
         {
+            Add(new IdentityColumnType("_id", "Id"));
             Add(new TextEditType("FirstName", "First Name", "First_name", 0, 1000));
             Add(new TextEditType("LastName", "Last Name", "Last_name", 0, 1000));
             Add(new TextEditType("City", "City", "City_", 0, 1000));

@@ -91,6 +91,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataColumnExtensions\IdentityDataColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataColumnExtensions\IntSpinEditDataColumn.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -104,6 +107,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataColumnExtensions\DataColumnFactory.cs" />
+    <Compile Include="GridColumnExtensions\IdentityGridColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Promises\ChangeValuesPromise.cs" />
     <Compile Include="Promises\FindMimeTypePromise.cs" />
     <Compile Include="Promises\OpenTabularFilePromise.cs" />
@@ -143,6 +149,7 @@
     <Compile Include="Types\IColumnDefinitionType.cs" />
     <Compile Include="Types\DecimalSpinEditType.cs" />
     <Compile Include="Types\IntSpinEditType.cs" />
+    <Compile Include="Types\IdentityColumnType.cs" />
     <Compile Include="Types\TextEditType.cs" />
     <Compile Include="Workloads\DataTableWorkload.cs" />
     <Compile Include="Workloads\OpenTabularFileWorkload.cs" />

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using Tabular.TabModels;
 using Tabular.Types;
 using Tabular.Workloads;
@@ -36,11 +35,7 @@ namespace Tabular.Promises
 
         private void AddColumn(DataTableWorkload dataTableWorkload)
         {
-            Workload.DataTable.SyncColumns(Workload.List);
-
-            var row = Workload.DataTable.NewRow();
-
-            Workload.DataTable.Rows.Add(row);
+            Workload.DataTable.InitRow(Workload.List);
         }
     }
 }

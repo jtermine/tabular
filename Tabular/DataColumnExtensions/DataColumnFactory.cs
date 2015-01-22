@@ -9,6 +9,8 @@ namespace Tabular.DataColumnExtensions
         {
             switch (type.ValueType)
             {
+                case ColumnValueType.IdentityColumn:
+                    return (type as IdentityColumnType).AsDataColumn();
                 case ColumnValueType.IntSpinEdit:
                     return (type as IntSpinEditType).AsDataColumn();
                 case ColumnValueType.DecimalSpinEdit:
@@ -20,6 +22,11 @@ namespace Tabular.DataColumnExtensions
                 default:
                     return null;
             }
+        }
+
+        public static IdentityDataColumn AsDataColumn(this IdentityColumnType type)
+        {
+            return type == null ? null : new IdentityDataColumn(type);
         }
 
         public static ComboBoxDataColumn AsDataColumn(this ComboBoxType type)
