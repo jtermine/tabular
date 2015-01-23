@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
 using Tabular.TabModels;
@@ -19,9 +20,9 @@ namespace Tabular.Promises
             this.WithExecutor("addColumn", AddColumn);
         }
 
-        public AddColumnPromise Prep(List<IColumnDefinitionType> list, DataTable dataTable, ConcurrentQueue<DataRow> rows)
+        public AddColumnPromise Prep(List<IColumnDefinitionType> list, DataTable dataTable, ConcurrentQueue<Action> rows)
         {
-            Workload.Rows = rows;
+            Workload.FormActions = rows;
             Workload.DataTable = dataTable;
             Workload.List = list;
             
@@ -35,7 +36,7 @@ namespace Tabular.Promises
 
         private void AddColumn(DataTableWorkload dataTableWorkload)
         {
-            Workload.Rows.Enqueue(Workload.DataTable.GetDataRow(Workload.List));
+            Workload.FormActions.Enqueue(() => dataTableWorkload.DataTable.GetDataRow(dataTableWorkload.List));
         }
     }
 }

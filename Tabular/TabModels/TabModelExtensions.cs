@@ -44,7 +44,7 @@ namespace Tabular.TabModels
                     row[dc.ColumnName] = Guid.NewGuid().ToString("N");
                 }
 
-                // dataTable.Rows.Add(row);
+                dataTable.Rows.Add(row);
 
                 return row;
 

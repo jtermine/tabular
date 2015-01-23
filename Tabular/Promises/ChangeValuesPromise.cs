@@ -38,6 +38,8 @@ namespace Tabular.Promises
             {
                 Trace(new GenericEventMessage(0, gridCell.Column.FieldName));
 
+                if (gridCell.RowHandle < 0) continue;
+
                 var getRow = selectedCellsWorkload.DataTable.Rows[gridCell.RowHandle];
 
                 if (gridCell.Column.ColumnType == typeof(string))

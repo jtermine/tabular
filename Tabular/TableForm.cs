@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Data;
-using System.Threading;
+using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
+using Tabular.GridColumnExtensions;
 using Tabular.Promises;
 using Tabular.TabModels;
-using Timer = System.Timers.Timer;
 
 namespace Tabular
 {
     public partial class TableForm : XtraForm
     {
-        private readonly ConcurrentQueue<DataRow> _rows = new ConcurrentQueue<DataRow>();
         private readonly StudentTabModel _studentTabModel = new StudentTabModel();
         private readonly DataSet _dataSet = new DataSet("columns");
-        private readonly FormTimer _timer = new FormTimer();
+        private readonly EventSink _timer = new EventSink();
 
         public TableForm()
         {
@@ -28,21 +26,21 @@ namespace Tabular
             dataTable.SyncColumns(new StudentTabModel());
 
             bindingSource1.DataSource = dataTable;
+
             gridControl1.DataSource = bindingSource1.DataSource;
+            gridView1.Columns.Clear();
+
+            _studentTabModel.ForEach(type => gridView1.Columns.Add(type.AsGridColumn()));
 
             _timer.Tick += timer1_Tick;
-
-            //InitializeColumns();
         }
-
-        
 
         private void barAddColumn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var addColumnPromise = new AddColumnPromise();
 
             addColumnPromise
-                .Prep(_studentTabModel, _dataSet.Tables["tableColumns"], _rows)
+                .Prep(_studentTabModel, _dataSet.Tables["tableColumns"], _timer.Queue)
                 .RunAsync();
         }
 
@@ -50,14 +48,14 @@ namespace Tabular
         {
             var fileDialog = openFileDialog1.ShowDialog(this);
 
-            //switch (fileDialog)
-            //{
-            //    case DialogResult.OK:
-            //        new OpenTabularFilePromise()
-            //            .WithFileName(openFileDialog1.FileName)
-            //            .RunAsync();
-            //        break;
-            //}
+            switch (fileDialog)
+            {
+                case DialogResult.OK:
+                    new OpenTabularFilePromise()
+                        .WithFileName(openFileDialog1.FileName)
+                        .RunAsync();
+                    break;
+            }
         }
 
         private void gridView1_ShownEditor(object sender, EventArgs e)
@@ -80,15 +78,10 @@ namespace Tabular
             new ChangeValuesPromise().Prep(selectedCells, (bindingSource1.DataSource as DataTable), "newValue").Run();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, Action action)
         {
-            DataRow result;
-
-            while (_rows.TryDequeue(out result))
-            {
-                if (result == null) continue;
-                _dataSet.Tables["tableColumns"].Rows.Add(result);
-            }
+            if (IsDisposed || !IsHandleCreated) return;
+            Invoke(action);
         }
     }
 }
